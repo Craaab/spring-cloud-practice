@@ -42,7 +42,7 @@ public class PaymentController {
             return new CommonResult(200, "get success port: " + serverPort, payment);
         }
         else{
-            return new CommonResult(444, "get failed. id: " + id, null);
+            return new CommonResult(444, "get failed. id: " + id + "| port :" + serverPort, null);
         }
     }
 }

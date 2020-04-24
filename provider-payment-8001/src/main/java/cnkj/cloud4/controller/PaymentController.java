@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -24,35 +25,36 @@ public class PaymentController {
     @Resource
     private DiscoveryClient discoveryClient;
 
-    @PostMapping(value="/payment/create")
-    public CommonResult create(@RequestBody Payment payment){
+    @PostMapping(value = "/payment/create")
+    public CommonResult create(@RequestBody Payment payment) {
         int rslt = paymentService.create(payment);
         log.info("----------create　处理结果 ：" + rslt);
-        if (rslt > 0)
-        {
+        if (rslt > 0) {
             return new CommonResult(200, "create success1 port: " + serverPort, rslt);
-        }
-        else{
+        } else {
             return new CommonResult(444, "create failed", null);
         }
     }
 
 
-    @GetMapping(value="/payment/get/{id}")
-    public CommonResult<Payment> getPaymentByid(@PathVariable("id")Long id){
+    @GetMapping(value = "/payment/get/{id}")
+    public CommonResult<Payment> getPaymentByid(@PathVariable("id") Long id) {
         Payment payment = paymentService.getPaymentById(id);
         log.info("----------getPaymentByid　处理结果 ：" + payment);
-        if (payment != null)
-        {
+        if (payment != null) {
             return new CommonResult(200, "get success port: " + serverPort, payment);
-        }
-        else{
-            return new CommonResult(444, "get failed. id: " + id, null);
+        } else {
+            try {
+                TimeUnit.SECONDS.sleep(6);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            return new CommonResult(444, "get failed. id: " + id + "| port :" + serverPort, null);
         }
     }
 
     @GetMapping(value = "/payment/discovery")
-    public Object discovery(){
+    public Object discovery() {
         List<String> services = discoveryClient.getServices();
         for (String service : services) {
             log.info("Service~~~~~~~~~~~~~" + service);
