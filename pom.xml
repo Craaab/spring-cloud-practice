@@ -15,6 +15,7 @@
         <module>eureka-server-7002</module>
         <module>provider-payment-8002</module>
         <module>consumer-feign-payment-80</module>
+        <module>provider-hystrix-payment-8001</module>
     </modules>
     <packaging>pom</packaging>
 

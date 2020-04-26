@@ -1,0 +1,32 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: cloud-hystrix-payment-service
+
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://47.92.198.14:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: "root"
+    password: "Cnkj2020"
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: cnkj.cloud4.entities
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      #      defaultZone: "http://localhost:7001/eureka"
+      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
+
+  instance:
+    hostname: localhost
+    instance-id: hystrix-payment-8001
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 1
+    lease-expiration-duration-in-seconds: 2
