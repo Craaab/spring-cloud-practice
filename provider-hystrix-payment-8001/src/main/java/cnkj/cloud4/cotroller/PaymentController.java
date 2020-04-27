@@ -33,5 +33,24 @@ public class PaymentController {
     }
 
 
+    @GetMapping("/payment/hystrix/lb/{id}")
+    public String PaymentInfo_lb(@PathVariable("id") Integer id){
+        String rslt = serverPort;
+        log.info("～～～～～～～～～～～～～Relst:" + rslt);
+        return rslt;
+    }
+
+
+    /**
+     * 服务熔断
+     * @return
+     */
+    @GetMapping("/payment/hystrix/circuit/{id}")
+    public String circuitBreaker(@PathVariable("id") Long id){
+        String rslt = paymentService.circuitBreaker(id);
+        log.info("～～～～～～～～～～～～～circuitBreaker:" + rslt);
+        return rslt;
+
+    }
 }
 

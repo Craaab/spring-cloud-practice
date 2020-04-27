@@ -65,4 +65,9 @@ public class PaymentController {
         }
         return this.discoveryClient;
     }
+
+    @GetMapping(value = "/payment/lb/{id}")
+    public String getPaymentLdByid(@PathVariable("id") Long id) {
+        return serverPort;
+    }
 }

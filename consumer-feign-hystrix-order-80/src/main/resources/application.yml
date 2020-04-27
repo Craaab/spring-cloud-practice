@@ -11,7 +11,6 @@ eureka:
     service-url:
       #      defaultZone: "http://localhost:7001/eureka"
       defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka
-
-#ribbon:
-#  ReadTimeout: 7001 # 读取超时
-#  ConnectTimeout: 7000 # 连接超时
+feign:
+  hystrix:
+    enabled: true
