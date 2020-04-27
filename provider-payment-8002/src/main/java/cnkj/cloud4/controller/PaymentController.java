@@ -45,4 +45,10 @@ public class PaymentController {
             return new CommonResult(444, "get failed. id: " + id + "| port :" + serverPort, null);
         }
     }
+
+
+    @GetMapping(value = "/payment/lb/{id}")
+    public String getPaymentLdByid(@PathVariable("id") Long id) {
+        return serverPort;
+    }
 }
