@@ -3,17 +3,14 @@ server:
 
 spring:
   application:
-    name: cloud-order-service
+    name: cloud-feign-hystrix-order-service
 
 eureka:
   client:
-    register-with-eureka: true
-    fetch-registry: true
+    register-with-eureka: false
     service-url:
       #      defaultZone: "http://localhost:7001/eureka"
       defaultZone: http://eureka7001.com:7001/eureka, http://eureka7002.com:7002/eureka
-  instance:
-    hostname: localhost
 
 #ribbon:
 #  ReadTimeout: 7001 # 读取超时
