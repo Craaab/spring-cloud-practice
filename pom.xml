@@ -19,6 +19,8 @@
         <module>consumer-feign-hystrix-order-80</module>
         <module>consumer-hystrix-dashboard-9001</module>
         <module>gateway-gateway-9527</module>
+        <module>config-center-3344</module>
+        <module>config-client-3355</module>
     </modules>
     <packaging>pom</packaging>
 
