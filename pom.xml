@@ -21,6 +21,9 @@
         <module>gateway-gateway-9527</module>
         <module>config-center-3344</module>
         <module>config-client-3355</module>
+        <module>alicloud-provider-payment-9001</module>
+        <module>alicloud-provider-payment-9002</module>
+        <module>alicloud-consumer-payment-83</module>
     </modules>
     <packaging>pom</packaging>
 
